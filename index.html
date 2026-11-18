@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horloge de Paris</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+  margin: 0;
+ background-color: #f0f0f0;
+ }
+ .clock-container {
+ background-color: #ffffff;
+ padding: 20px 40px;
+ border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ text-align: center;
+ }
+ #paris-time {
+ font-size: 3em;
+ font-weight: bold;
+  color: #333;
+ margin-bottom: 10px;
+ }
+ .label {
+ font-size: 1.2em;
+ color: #666;
+ }
+  </style>
+</head>
+<body>
+ <div class="clock-container">
+ <div id="paris-time"></div>
+ <div class="label">Heure de Paris</div>
+ </div>
+
+ <script>
+ function updateParisTime() {
+ const now = new Date();
+ const options = {
+ hour: '2-digit',
+  minute: '2-digit',
+ second: '2-digit',
+ timeZone: 'Europe/Paris'
+ };
+ const parisTime = new Intl.DateTimeFormat('fr-FR', options).format(now);
+  document.getElementById('paris-time').textContent = parisTime;
+ }
+
+ // Met à jour l'heure immédiatement au chargement de la page
+ updateParisTime();
+
+ // Met à jour l'heure toutes les secondes
+  setInterval(updateParisTime, 1000);
+ </script>
+</body>
+</html>
